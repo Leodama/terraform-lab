@@ -1,0 +1,25 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+provider "aws" {
+  region  = "us-east-1"
+}
+
+
+resource "aws_instance" "app_server01" {
+  ami           = "ami-00874d747dde814fa"
+  instance_type = "t2.micro"
+  key_name = "terra-lab"
+
+  tags = {
+    Name = "AppServerInstance-lab"
+  }
+}
