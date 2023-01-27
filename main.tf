@@ -19,13 +19,14 @@ resource "aws_instance" "app_server01" {
   instance_type = "t2.micro"
   key_name = "terra-lab"
   user_data = <<-EOF
-                  #!/bin/bash
-                  cd /home/ubuntu
-                  echo "<h1>Feito com Terraform</h1>" > index.html
-                  nohup busybox httpd -f -p 8080 &
+                 #!/bin/bash
+                 cd /home/ubuntu
+                 echo "<h1>Feito com Terraform</h1>" > index.html
+                 sudo mkdir teste-leo
+                 nohup busybox httpd -f -p 8080 &
                  EOF 
 
   tags = {
-    Name = "teste-terraform-lab"
+    Name = "terraform-lab"
   }
 }
